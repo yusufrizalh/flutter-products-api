@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_print, sort_child_properties_last
 
 import 'package:flutter/material.dart';
+import 'package:flutter_first_app/pages/products_page.dart';
 import 'package:flutter_first_app/pages/search_page.dart';
 import 'package:flutter_first_app/pages/settings_page.dart';
 
@@ -77,6 +78,24 @@ class SliverAppbarWidget extends StatelessWidget {
               ),
               leading: Icon(Icons.contact_mail, color: Colors.white),
               onTap: () => print('Menu Contact'),
+            ),
+            ListTile(
+              title: Text(
+                'Products',
+                style: TextStyle(
+                  fontSize: 14.0,
+                  color: Colors.white,
+                ),
+              ),
+              leading: Icon(Icons.shop, color: Colors.white),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ProductsPage(),
+                  ),
+                );
+              },
             ),
           ],
         ),
