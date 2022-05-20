@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_print, sort_child_properties_last
 
 import 'package:flutter/material.dart';
+import 'package:flutter_first_app/pages/location_page.dart';
 import 'package:flutter_first_app/pages/products_page.dart';
 import 'package:flutter_first_app/pages/search_page.dart';
 import 'package:flutter_first_app/pages/settings_page.dart';
@@ -97,6 +98,24 @@ class SliverAppbarWidget extends StatelessWidget {
                 );
               },
             ),
+            ListTile(
+              title: Text(
+                'Location',
+                style: TextStyle(
+                  fontSize: 14.0,
+                  color: Colors.white,
+                ),
+              ),
+              leading: Icon(Icons.location_on, color: Colors.white),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => LocationPage(),
+                  ),
+                );
+              },
+            ),
           ],
         ),
         backgroundColor: Colors.red,
@@ -146,7 +165,7 @@ class SliverAppbarWidget extends StatelessWidget {
                   ),
                 ),
                 background: Image(
-                  image: AssetImage('/images/pexels_1.jpg'),
+                  image: AssetImage('assets/images/pexels_1.jpg'),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -171,7 +190,7 @@ class SliverAppbarWidget extends StatelessWidget {
       padding: EdgeInsets.zero,
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('images/nav_drawer_header_background.jpg'),
+          image: AssetImage('assets/images/nav_drawer_header_background.jpg'),
           fit: BoxFit.fill,
         ),
       ),
@@ -185,7 +204,7 @@ class SliverAppbarWidget extends StatelessWidget {
               radius: 34,
               child: CircleAvatar(
                 radius: 30,
-                backgroundImage: AssetImage('images/pexels_2.jpeg'),
+                backgroundImage: AssetImage('assets/images/pexels_2.jpeg'),
               ),
             ),
           ),

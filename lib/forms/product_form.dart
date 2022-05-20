@@ -1,6 +1,7 @@
 // ignore_for_file: must_be_immutable, use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables, import_of_legacy_library_into_null_safe, avoid_unnecessary_containers, sort_child_properties_last, avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:flutter_first_app/base_url.dart';
 import 'package:flutter_first_app/models/category_model.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
@@ -51,7 +52,7 @@ class _ProductFormState extends State<ProductForm> {
   List? data = [];
 
   Future<List<CategoryModel>> getCategoryList() async {
-    const url = "http://localhost/flutter-api/products/list_category.php";
+    final url = "${BaseUrl.BASE_URL}/list_category.php";
     final response = await http.get(Uri.parse(url));
     final items =
         convert.json.decode(response.body).cast<Map<String, dynamic>>();
@@ -95,32 +96,41 @@ class _ProductFormState extends State<ProductForm> {
           ),
           Padding(padding: EdgeInsets.all(12.0)),
           // disini ada dropdown
-          Container(
-            child: DropdownButton(
-              icon: Icon(Icons.arrow_drop_down),
-              isExpanded: true,
-              underline: Container(height: 1.0, color: Colors.grey),
-              hint: Text('Select Category'),
-              value: selectedCategory,
-              items: data!.map(
-                (list) {
-                  return DropdownMenuItem(
-                    child: Row(
-                      children: <Widget>[
-                        Text(list['category_name'].toString()),
-                      ],
-                    ),
-                    value: list['category_id'].toString(),
-                  );
-                },
-              ).toList(),
-              onChanged: (String? value) {
-                setState(() {
-                  selectedCategory = value!;
-                  print(selectedCategory.toString());
-                  widget.categoryProductCtrl.text = value;
-                });
-              },
+          Expanded(
+            child: InputDecorator(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+              ),
+              child: DropdownButtonHideUnderline(
+                child: DropdownButton(
+                  icon: Icon(Icons.arrow_drop_down),
+                  isExpanded: true,
+                  underline: Container(height: 1.0, color: Colors.grey),
+                  hint: Text('Select Category'),
+                  value: selectedCategory,
+                  items: data!.map(
+                    (list) {
+                      return DropdownMenuItem(
+                        child: Row(
+                          children: <Widget>[
+                            Text(list['category_name'].toString()),
+                          ],
+                        ),
+                        value: list['category_id'].toString(),
+                      );
+                    },
+                  ).toList(),
+                  onChanged: (String? value) {
+                    setState(() {
+                      selectedCategory = value!;
+                      print(selectedCategory.toString());
+                      widget.categoryProductCtrl.text = value;
+                    });
+                  },
+                ),
+              ),
             ),
           ),
           Padding(padding: EdgeInsets.all(12.0)),
