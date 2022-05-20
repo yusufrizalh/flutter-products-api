@@ -17,6 +17,7 @@ class _AddProductState extends State<AddProduct> {
   // atribut yang akan disimpan
   TextEditingController nameProductCtrl = TextEditingController();
   TextEditingController priceProductCtrl = TextEditingController();
+  TextEditingController categoryProductCtrl = TextEditingController();
 
   // method untuk menyimpan product baru
   Future createProduct() async {
@@ -26,6 +27,7 @@ class _AddProductState extends State<AddProduct> {
       body: {
         "product_name": nameProductCtrl.text,
         "product_price": priceProductCtrl.text,
+        "category_id": categoryProductCtrl.text,
       },
     );
   }
@@ -46,6 +48,7 @@ class _AddProductState extends State<AddProduct> {
               formKey: formKey,
               nameProductCtrl: nameProductCtrl,
               priceProductCtrl: priceProductCtrl,
+              categoryProductCtrl: categoryProductCtrl,
             ),
           ),
         ),

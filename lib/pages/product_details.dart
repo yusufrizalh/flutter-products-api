@@ -44,6 +44,7 @@ class _ProductDetailsState extends State<ProductDetails> {
               ),
             ),
             Text('Product price: ${widget.productModel.product_price}'),
+            Text('Product category: ${widget.productModel.category_name}'),
           ],
         ),
       ),

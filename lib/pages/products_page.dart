@@ -28,7 +28,7 @@ class _ProductsPageState extends State<ProductsPage> {
   }
 
   Future<List<ProductModel>> getProductsList() async {
-    final url = '${BaseUrl.BASE_URL}/list.php';
+    final url = '${BaseUrl.BASE_URL}/select_products_categories.php';
     final response = await http.get(Uri.parse(url));
 
     final items =
@@ -82,7 +82,7 @@ class _ProductsPageState extends State<ProductsPage> {
                           ),
                         );
                         print(
-                            '${item.product_name.toString()}  -  ${item.product_price.toString()}');
+                            '${item.product_name.toString()}  -  ${item.product_price.toString()} - ${item.category_name.toString()}');
                       },
                     ),
                   );

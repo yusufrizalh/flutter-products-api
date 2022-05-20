@@ -22,6 +22,7 @@ class _EditProductState extends State<EditProduct> {
   // atribut yang akan disimpan
   TextEditingController nameProductCtrl = TextEditingController();
   TextEditingController priceProductCtrl = TextEditingController();
+  TextEditingController categoryProductCtrl = TextEditingController();
 
   Future updateProduct() async {
     final url = '${BaseUrl.BASE_URL}/update.php';
@@ -31,6 +32,7 @@ class _EditProductState extends State<EditProduct> {
         "product_id": widget.productModel.product_id.toString(),
         "product_name": nameProductCtrl.text,
         "product_price": priceProductCtrl.text,
+        "category_name": categoryProductCtrl.text,
       },
     );
   }
@@ -60,6 +62,7 @@ class _EditProductState extends State<EditProduct> {
               formKey: formKey,
               nameProductCtrl: nameProductCtrl,
               priceProductCtrl: priceProductCtrl,
+              categoryProductCtrl: categoryProductCtrl,
             ),
           ),
         ),
